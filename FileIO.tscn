@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0andrrtd6bp"]
+
+[ext_resource type="Script" uid="uid://bu4w5ba1a2vj3" path="res://control.gd" id="1_evwex"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_evwex")
+
+[node name="OpenButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = 250.0
+offset_bottom = 100.0
+text = "OpenButton"
+
+[node name="SaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 50.0
+offset_right = 450.0
+offset_bottom = 100.0
+text = "SaveButton"
+
+[node name="OpenFileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+
+[node name="SaveFileDialog" type="FileDialog" parent="."]
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 145.0
+offset_right = 868.0
+offset_bottom = 609.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 881.0
+offset_top = 20.0
+offset_right = 1115.0
+offset_bottom = 267.0

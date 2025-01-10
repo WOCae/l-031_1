@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Godot HTML5 Export</title>
+    <script>
+        // Godotから呼び出すファイル選択ダイアログの設定
+        function openFile(callback) {
+            const input = document.createElement("input");
+            input.type = "file";
+            input.accept = ".txt"; // テキストファイルのみ
+            input.onchange = (event) => {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    callback(e.target.result);
+                };
+                reader.readAsText(file);
+            };
+            input.click();
+        }
+
+        // Godotで利用可能な関数として公開
+        window.openFileDialog = (callbackId) => {
+            openFile((fileContent) => {
+                GodotRuntime.call(callbackId, fileContent);
+            });
+        };
+    </script>
+</head>
+<body>
+    <script src="{{{ export('engine.js') }}}"></script>
+    <script>
+        WebAssembly.instantiateStreaming(fetch("{{{ export('engine.wasm') }}}"), { 
+            godot: true 
+        }).then((result) => {
+            result.instance.exports._start();
+        });
+    </script>
+</body>
+</html>
