@@ -16,7 +16,7 @@ extends Control
 func _ready():
 	# ファイルダイアログの設定
 	open_file_dialog.mode = 0  # ファイル選択モード
-	open_file_dialog.access = FileDialog.ACCESS_RESOURCES
+	open_file_dialog.access = FileDialog.ACCESS_FILESYSTEM
 	open_file_dialog.filters = ["*.txt", "*.*"]
 
 	save_file_dialog.mode = 2  # ファイル保存モード
